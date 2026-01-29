@@ -2,10 +2,14 @@ import { Moon, MoonStar, Search, ShoppingCart, Sun } from 'lucide-react'
 import React, { useContext, useState, type ChangeEvent } from 'react'
 import { UserContext } from '../context/UserContext'
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../store/Store';
 
 // function Navbar({handleSearch}: {handleSearch: (q:string)=>void}) {
 function Navbar() {
     const { name, mod, setMode } = useContext(UserContext);
+    const items = useSelector((state: RootState) => state.cart.items)
+
     // const [searchText, setSearchText] = useState<string>();
     // const handelChange = (e:ChangeEvent<HTMLInputElement>) =>{
     //     setSearchText(e.target.value);
@@ -42,8 +46,8 @@ function Navbar() {
                         }
 
 
-                        <NavLink to="/shop" className={({ isActive }: { isActive: boolean }) => isActive ? "bg-gray-900 rounded-md px-3 py-2 text-sm font-medium text-white" : "rounded-md px-3 py-2 text-sm font-medium text-white"}>Dashboard</NavLink>
-                        <NavLink to="/cart" className={({ isActive }: { isActive: boolean }) => isActive ? "bg-gray-900 rounded-md px-3 py-2 text-sm font-medium text-white" : "rounded-md px-3 py-2 text-sm font-medium text-white"}>Cart</NavLink>
+                        <NavLink to="/shop/products" className={({ isActive }: { isActive: boolean }) => isActive ? "bg-gray-900 rounded-md px-3 py-2 text-sm font-medium text-white" : "rounded-md px-3 py-2 text-sm font-medium text-white"}>Dashboard</NavLink>
+                        <NavLink to="/shop/cart" className={({ isActive }: { isActive: boolean }) => isActive ? "bg-gray-900 rounded-md px-3 py-2 text-sm font-medium text-white" : "rounded-md px-3 py-2 text-sm font-medium text-white"}>Cart({items.length})</NavLink>
                         <NavLink to="/about" className={({ isActive }: { isActive: boolean }) => isActive ? "bg-gray-900 rounded-md px-3 py-2 text-sm font-medium text-white" : "rounded-md px-3 py-2 text-sm font-medium text-white"}>About Us</NavLink>
 
                     </div>

@@ -1,5 +1,6 @@
 import React, { useContext, useState, type ReactNode } from 'react'
 import { UserContext } from '../context/UserContext'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 interface PropType {
     children?: ReactNode,
@@ -11,7 +12,8 @@ interface PropType {
     category: string
 }
 function Card({ images, title, price = 0, description, stock, category, children }: PropType) {
-    const {mod} = useContext(UserContext);
+    const { mod } = useContext(UserContext);
+    
     return (
         <div className={`relative w-full sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl ${mod ? 'bg-gray-300' : 'bg-teal-200'} shadow-lg rounded`}>
             <div className='h-50'>
@@ -27,6 +29,8 @@ function Card({ images, title, price = 0, description, stock, category, children
             <div className="px-6 pt-4 pb-2">
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{'₹' + price}</span>
                 <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{'Availabe :' + stock}</span>
+                <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">{category}</span>
+
             </div>
             {children}
         </div>
