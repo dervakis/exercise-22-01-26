@@ -17,7 +17,8 @@ export const useCategory = () => {
 export const useProductByCategory = (category:string) => {
     return useQuery({
         queryKey: ['category_products', category],
-        queryFn: () => fetchProductByCategory(category)
+        queryFn: () => fetchProductByCategory(category),
+        staleTime: Infinity
     })
 }
 export const useProductById = (id:number) =>{

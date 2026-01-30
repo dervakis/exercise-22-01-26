@@ -11,7 +11,7 @@ export type CartEntry={
 }
 
 type CartState={
-    items: CartEntry[]
+    items: CartEntry[],
 }
 const prevd: CartEntry[] = JSON.parse(localStorage.getItem('cartItems')!) as CartEntry[]
 const initialState : CartState ={

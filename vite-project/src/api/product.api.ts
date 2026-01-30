@@ -13,6 +13,7 @@ export const searchProduct = async (term:string): Promise<Item[]> => {
 
 export const fetchProductByCategory = async (category:string) : Promise<Item[]> =>{
     const res = await productApi.get(`/category/${category}`)
+    console.log('category api' + category);
     return res.data.products;
 }
 

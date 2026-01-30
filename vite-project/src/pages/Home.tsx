@@ -11,7 +11,7 @@ import type { Item } from '../common/Item.ts';
 
 export default function Home() {
     const { data: products, isLoading, error } = useProducts();
-    const { data: category, isLoading: isLoading2, error: error2 } = useCategory();
+    const { data: category, isLoading: isLoading2, error: error2, re } = useCategory();
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const [catname, setCatname] = useState<string>();
